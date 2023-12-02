@@ -40,7 +40,7 @@ const HomeServices = () => {
                 Check out the our Effective Services
             </Typography>
             {/* direction='row' sx={{gap:{lg:'30px',xs:'30px'},mt:{lg:'50px',xs:'30px'}}} */}
-            <Stack  direction={{xs:'column',lg:'row'}} gap={5} >
+            <Stack  direction={{xs:'column',lg:'row'}} gap={5} mb={20} >
                 {data.map((service)=>(
                     <ServiceCard key={service.id} service={service} />
                 ))}
