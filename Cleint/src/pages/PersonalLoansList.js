@@ -43,7 +43,7 @@ const PersonalLoansList=()=> {
   const[currentPage,setCurrentPage]=useState(1);
   const recordsPerPage=5;
 
-    const[userData,isLoading,isError]=useFetch("http://localhost:8080/personalLoans/getAll");
+    const[userData,isLoading,isError]=useFetch("/personalloans/");
 
     //Print PDF
     const generatePDF=useReactToPrint({

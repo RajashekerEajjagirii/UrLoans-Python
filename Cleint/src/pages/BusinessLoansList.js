@@ -42,7 +42,7 @@ const BusinessLoansList=()=> {
     const componentPDF=useRef();
     const[currentPage,setCurrentPage]=useState(1);
     const recordsPerPage=5;
-    const[userData,isLoading,isError]=useFetch("http://localhost:8080/businessloans/getAll");
+    const[userData,isLoading,isError]=useFetch("/businessloans/");
 
     //Print PDF
     const generatePDF=useReactToPrint({

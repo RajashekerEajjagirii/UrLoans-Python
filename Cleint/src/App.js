@@ -25,6 +25,7 @@ import BusinessLoansList from "./pages/BusinessLoansList";
 import LAPList from "./pages/LAPList";
 import NotFound from "./pages/NotFound";
 import { BrowserRouter } from 'react-router-dom';
+import Queries from "./pages/Queries";
 
 const App=()=> {
 
@@ -64,6 +65,7 @@ const App=()=> {
             <Route path="personalloans" element={<PersonalLoansList />} />
             <Route path="businessloans" element={<BusinessLoansList />} />
             <Route path="propertyloans" element={<LAPList />} />
+            <Route path="queries" element={<Queries/>} />
           </Route>
           <Route path="/*" element={<NotFound/>} />
           

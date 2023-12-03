@@ -10,6 +10,7 @@ import {LiaBusinessTimeSolid} from "react-icons/lia";
 import {BsPersonBadge} from "react-icons/bs";
 import {IoBusinessOutline} from "react-icons/io5";
 import { useNavigate } from 'react-router-dom';
+import { LuMailQuestion } from "react-icons/lu";
 
 
 const AdminHome = (props) => {
@@ -141,6 +142,27 @@ const AdminHome = (props) => {
                      <IoBusinessOutline style={{backgroundColor:'blue',fontSize:40}}/>
                     </Avatar>
                     <ListItemText primary="Loan Against Property" style={{marginLeft:8}}  />
+                    </ListItemButton>
+                </ListItem>
+
+                <ListItem disablePadding sx={{ display: 'block' }} >
+                    <ListItemButton LinkComponent={Link} to="/adminhome/queries"
+                        sx={{
+                    minHeight: 18,
+                    justifyContent:'center',
+                    px: 0.5,
+                        }}
+                    >
+                    <Avatar
+                    sx={{
+                        minWidth: 0,
+                        mr:'auto',
+                        justifyContent: 'center',
+                    }}
+                    >
+                     <LuMailQuestion style={{backgroundColor:'blue',fontSize:31}}/>
+                    </Avatar>
+                    <ListItemText primary="Queries" style={{marginLeft:8}}  />
                     </ListItemButton>
                 </ListItem>
 

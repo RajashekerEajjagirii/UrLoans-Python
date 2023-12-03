@@ -134,7 +134,7 @@ class LoginAPI(APIView):
                 # set_cookie using JWT Token
                 payload={
                     'email':user.email,
-                    'exp':datetime.datetime.utcnow() + datetime.timedelta(minutes=20),
+                    'exp':datetime.datetime.utcnow() + datetime.timedelta(minutes=60),
                     'iat':datetime.datetime.utcnow()
                 }
 

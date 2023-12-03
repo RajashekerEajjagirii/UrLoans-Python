@@ -44,3 +44,21 @@ class PropertyloanAPI(APIView):
                     'message':'Something Went Wrong-Server Issue',
                     'data':{}
             },status.HTTP_502_BAD_GATEWAY)
+
+
+    # get all users data
+    def get(self,request):
+
+        try:
+            token=request.COOKIES.get('UrLoans')
+            if not token:
+                return Response({'messsage':'Unautoraized User token'},status.HTTP_401_UNAUTHORIZED)
+
+            payload=jwt.decode(token,'secret',algorithms=['HS256'])
+            user=Propertyloan.objects.all().order_by('-createdAt').values()
+            print(user)
+            serializer=PropertySerializer(user,many=True)
+            return Response(serializer.data)
+        
+        except Exception as e:
+            return Response({'messsage':'Unautoraized User'},status.HTTP_401_UNAUTHORIZED)
