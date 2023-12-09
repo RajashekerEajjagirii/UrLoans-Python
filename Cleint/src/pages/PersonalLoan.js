@@ -73,11 +73,11 @@ const PersonalLoan = () => {
                 <Paper elevation={10} style={PaperStyle}>
                         <Grid align='center' mb={7}>
                             <Avatar style={{backgroundColor:'blue'}}> <BsPersonBadge fontSize={30}/> </Avatar>
-                            <h2 style={{marginTop:'15px'}}>Personal Loans</h2>
+                            <h4 style={{marginTop:'15px'}}>Personal Loans</h4>
                         </Grid>
 
                         <Grid mb={2}>
-                            <h4>Check Your Personal Loan Eligibility</h4>
+                            <h6>Check Your Personal Loan Eligibility</h6>
                         </Grid>
 
                         <form onSubmit={handleSubmit(onSubmit)}>

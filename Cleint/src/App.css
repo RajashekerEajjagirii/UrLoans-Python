@@ -125,3 +125,19 @@ body {
     gap:2rem;
   }
 }
+
+.body-box{
+  display: grid;
+  width: 600px;
+  background-color: #fff;
+  margin-left: 130px;
+}
+
+.body-box .header{
+  margin: 10px 20px 22px 220px;
+}
+
+.left{margin-left: 70px;
+  font-weight: bold;
+}
+.right{margin-left: 50px;}

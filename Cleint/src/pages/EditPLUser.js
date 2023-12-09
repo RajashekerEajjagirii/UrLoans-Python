@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
-import { Avatar,Container,Grid,Paper,Typography,TextField,InputAdornment,Checkbox,FormControlLabel, Button, MenuItem, Stack } from '@mui/material';
-import {FaHome} from "react-icons/fa";
-import {FaArrowRightLong} from 'react-icons/fa6';
+import React, { useEffect, useState } from 'react';
+import { Avatar, Box,Container,Grid,Paper,TextField,InputAdornment,Checkbox,FormControlLabel, Button, MenuItem, Stack } from '@mui/material';
+import {BsPersonBadge} from "react-icons/bs";
+import {MdUpdate} from 'react-icons/md';
+import {ImCancelCircle} from 'react-icons/im';
 import {useForm} from "react-hook-form"
-import {Flip, toast,ToastContainer, Zoom} from "react-toastify";
+import {Flip, toast,ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { Link, useParams, useNavigate } from 'react-router-dom';
+
 
 const occupationType=[
     {
@@ -35,57 +38,93 @@ const occupationType=[
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
-const HomeLoan = () => {
+const EditPLUser = () => {
 
-    const {register, handleSubmit, formState:{errors}, reset}=useForm();
     const [homeLoanData,setHomeLoanData]=useState();
-
+    const[user,setUser]=useState({});
+    const {id}=useParams();
+    const navigate=useNavigate();
+      console.log(id);
     const PaperStyle={
             padding:'60px 20px',
-            // margin:'20px auto',
+            margin:'20px auto',
             width:500,
-            height:1400
+            height:1200
     };
+
+    // useEffect(()=>{
+    //   getUserData();
+      
+    // },[]);
+
+    // const getUserData=async()=>{
+    //   const response =await fetch("/homeloans/getUser/"+id,{
+    //     method:"GET",
+    //     headers:{"Content-Type":"application/json"},
+    //     //body:JSON.stringify(data)
+    // });
+    //   const data= await response.json();
+    //   setUser(data);
+    //   console.log(response);
+    //   // const[userData,isError,isLoading]= useFetch("http://localhost:8080/homeloans/getUser/"+id);
+    // };
+
+    // const[userData,isError,isLoading]= useFetch("http://localhost:8080/homeloans/getUser/"+id);
+    // console.log(userData);
+    // setUser(userData);
+     //const defaultValues={fullName:'',email:'',mobileNum:'',city:''}
+     const {register, handleSubmit, formState:{errors},reset}=useForm({
+      defaultValues:async ()=>{
+        const response=await fetch(`/personalloans/${id}/`,{
+          method:"GET",
+          headers:{"Content-Type":"application/json"},
+          credentials: 'include',
+      });
+        const data1= await response.json();
+        const data=data1[0];
+        console.log(data);
+        return{
+          fullName:data.fullName??'',
+          email:data.email??'',
+          mobileNum:data.mobileNum,
+          city:data.city,
+          occupationType:data.occupationType,
+          loanAmount:data.loanAmount,
+          monthlySalary:data.monthlySalary,
+          monthlyEmi:data.monthlyEmi,
+          tenure:data.tenure,
+          dob:data.dob,
+          address:data.address
+        }
+      }
+     });
+     console.log(user);
      const onSubmit=async(data)=>{
-            // console.log(data);
-            setHomeLoanData(data);
+            console.log(data);
             
-            // Adding HomeLoans users data
+            // Update PersonalLoans users data
             try{
-                 const response=await fetch("/homeloans/",{
-                        method:"POST",
+                 const response=await fetch(`/personalloans/${id}/`,{
+                        method:"PUT",
                         headers:{"Content-Type":"application/json"},
                         credentials:'include',
                         body:JSON.stringify(data)
                     });
-                    console.log(response);
-                    if(response.status===201){
+                    console.log(Response);
+                    if(response.status===200){
                       toast.promise(
                           new Promise((resolve,reject)=>{
                               setTimeout(()=>{
                                 resolve();  
-                              },2000);
+                              },1000);
                           }),{
                               pending:"Loading...",
-                              success:"Your Eligible for Loan, Our Support team will contact you, Thank you",
+                              success:"Record  updated Successfully.",
                               error:'Error recieved'
                           }
                       );
                     } 
-
-                    if(response.status===226){
-                      toast.promise(
-                          new Promise((resolve,reject)=>{
-                              setTimeout(()=>{
-                                reject();  
-                              },1000);
-                          }),{
-                              pending:"Loading...",
-                              success:"success msg recieved",
-                              error:'Email is already exists'
-                          }
-                      );
-                    } 
+                  navigate("/adminhome/personalloans",3000);  
 
             }catch(error){
               toast.error("Internal Server issue,Try after some time..");
@@ -96,72 +135,54 @@ const HomeLoan = () => {
      console.log(errors);
     return (
       <Stack
-        sx={{ mt: { lg: "110px", xs: "90px" }, ml: { xs: "50px" }, mb: "0px" }}
+        sx={{ mt: { lg: "50px", xs: "50px" }, ml: { xs: "5px" }, mb: "0px" }}
         direction={{ lg: "row", xs: "column" }}
       >
-        <Stack mb={{ xs: "20px" }}>
-          <Typography
-            fontWeight="900"
-            fontSize="16px"
-            color="#42adf5"
-            mb="20px"
-          >
-            URLOANS Club
-          </Typography>
-          <Typography
-            mt={15}
-            fontWeight={600}
-            fontSize={16}
-            fontFamily="cursive"
-          >
-            "Achieve your goals faster with Ur Loan's innovative loan solutions.
-            We bring together a network of top financial institutions,
-            to offer you competitive rates and tailored loan packages.
-            Let us be your partner on the journey to success,
-            providing you with convenient repayment options and expert guidance
-            every step of the way..."
-          </Typography>
-        </Stack>
-        <Stack  ml={{lg:"50px" }}>
+        
+        <Stack  ml={{lg:"90px" }}>
           <Container>
             <Paper elevation={10} style={PaperStyle}>
               <Grid align="center" mb={7}>
                 <Avatar style={{ backgroundColor: "blue" }}>
-                  {" "}
-                  <FaHome />{" "}
+                  
+                < BsPersonBadge fontSize={40}/>
                 </Avatar>
-                <h4 style={{ marginTop: "15px" }}>Home Loans</h4>
+                <h4 style={{ marginTop: "15px" }}>Personal Loans</h4>
               </Grid>
               <Grid mb={2}>
-                <h6>Check Your Home Loan Eligibility</h6>
+                <h6>Edit Your Customer Profile</h6>
               </Grid>
               <form onSubmit={handleSubmit(onSubmit)}>
                 <TextField
                   margin="normal"
                   label="Full Name"
-                  variant="outlined"
+                  variant="outlined"                  
                   size="small"
                   fullWidth
                   {...register("fullName", {
                     required: "Full Name is required",
+                    
                   })}
                 />
                 <label className="error">{errors.fullName?.message}</label>
 
                 <TextField
+                  
                   margin="normal"
                   type="email"
                   label="Email"
                   variant="outlined"
+                  //value={user.email ?? ''}
                   size="small"
                   fullWidth
                   {...register("email", {
-                    required: "Email is Required",
+                    required: "Email is required",
                     pattern: {
                       value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                       message: "This is not a valid Email",
                     },
-                  })}
+                    
+                  },{})}
                 />
                 <label className="error">{errors.email?.message}</label>
 
@@ -169,6 +190,7 @@ const HomeLoan = () => {
                   margin="normal"
                   label="Mobile Number"
                   variant="outlined"
+                  //value={user.mobileNum ?? ''}
                   size="small"
                   fullWidth
                   {...register("mobileNum", {
@@ -193,6 +215,7 @@ const HomeLoan = () => {
                   margin="normal"
                   label="City"
                   variant="outlined"
+                 // value={user.city ??''}
                   size="small"
                   fullWidth
                   {...register("city", { required: "City is required!" })}
@@ -204,6 +227,7 @@ const HomeLoan = () => {
                   select
                   label="Occupation Type"
                   variant="outlined"
+                 // value={user.occupationType ??''}
                   size="small"
                   fullWidth
                   {...register("occupationType", {
@@ -224,6 +248,7 @@ const HomeLoan = () => {
                   margin="normal"
                   label="Required Loan Amount"
                   variant="outlined"
+                 // value={user.loanAmount ??''}
                   size="small"
                   fullWidth
                   {...register("loanAmount", {
@@ -236,6 +261,7 @@ const HomeLoan = () => {
                   margin="normal"
                   label="Monthly Net Salary"
                   variant="outlined"
+                  //value={user.monthlySalary ??''}
                   size="small"
                   fullWidth
                   {...register("monthlySalary", {
@@ -248,6 +274,7 @@ const HomeLoan = () => {
                   margin="normal"
                   label="Current Monthly EMIs"
                   variant="outlined"
+                 // value={user.monthlyEmi??''}
                   size="small"
                   fullWidth
                   {...register("monthlyEmi", {
@@ -260,6 +287,7 @@ const HomeLoan = () => {
                   margin="normal"
                   label="Tenure(Years)"
                   variant="outlined"
+                  //value={user.tenure??''}
                   size="small"
                   fullWidth
                   {...register("tenure", { required: "Tenure is required!" })}
@@ -270,9 +298,10 @@ const HomeLoan = () => {
                   margin="normal"
                   type="date"
                   variant="outlined"
+                 // value={user.dob??''}
                   size="small"
                   fullWidth
-                  {...register("dob", { required: "DOB is required!" })}
+                  {...register("dob", {  })}
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">DOB</InputAdornment>
@@ -285,6 +314,7 @@ const HomeLoan = () => {
                   margin="normal"
                   label="Address"
                   variant="outlined"
+                  //value={user.address??''}
                   fullWidth
                   {...register("address", { required: "Address is required" })}
                 />
@@ -295,21 +325,26 @@ const HomeLoan = () => {
                   style={{ color: "#a85432", marginBottom: "20px" }}
                   label="I here by accept terms & conditions."
                 />
-
+                <Stack direction='row' gap={3}>
                 <Button
                   type="submit"
                   variant="contained"
-                  fullWidth
-                  style={{ textTransform: "capitalize" }}
+                  color='success'
+                  
                 >
-                  Check Eligibility{" "}
-                  <FaArrowRightLong style={{ marginLeft: "10px" }} />
+                  Update
+                  <MdUpdate style={{ marginLeft: "10px",fontSize:'25px' }} />
                 </Button>
+
+                <Button variant='contained' color='error' LinkComponent={Link} to='/adminhome/personalloans'>Cancel
+                    <ImCancelCircle style={{ marginLeft: "10px",fontSize:'20px' }}/>
+                </Button>
+                </Stack>
               </form>
             </Paper>
           </Container>
           <ToastContainer
-                position="top-right"
+                position="top-center"
                 autoClose={5000}
                 hideProgressBar={false}
                 newestOnTop={false}
@@ -327,4 +362,4 @@ const HomeLoan = () => {
     );
 };
 
-export default HomeLoan;
+export default EditPLUser;

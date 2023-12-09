@@ -20,7 +20,13 @@ urlpatterns = [
     path('homeloans/<int:id>/', HLUserAPI.as_view()),
     # personalloans
     path('personalloans/', PersonalloanAPI.as_view()),
+    path('personalloans/<int:id>/',PLUserAPI.as_view()),
+    # businessloans
     path('businessloans/',BusinessloanAPI.as_view()),
+    path('businessloans/<int:id>/',BlUserAPI.as_view()),
+    # propertyloans
     path('propertyloans/', PropertyloanAPI.as_view()),
+    path('propertyloans/<int:id>/',LAPUserAPI.as_view()),
+    # queries
     path('queries/', QueriesAPI.as_view()),
 ]

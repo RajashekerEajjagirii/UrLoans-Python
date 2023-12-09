@@ -62,3 +62,69 @@ class PropertyloanAPI(APIView):
         
         except Exception as e:
             return Response({'messsage':'Unautoraized User'},status.HTTP_401_UNAUTHORIZED)
+        
+
+
+
+
+class LAPUserAPI(APIView):
+       
+        # Get user
+        def get(self,request,*args, **kwargs):
+       
+            id=kwargs['id']
+            token=request.COOKIES.get('UrLoans')
+            
+            if not token:
+                return Response({'messsage':'Unautoraized User token'},status.HTTP_401_UNAUTHORIZED)
+            
+            try:
+                payload=jwt.decode(token,'secret',algorithms=['HS256'])
+                user=Propertyloan.objects.filter(id=id).values()
+                serializer=PropertySerializer(user,many=True)
+                return Response(serializer.data)
+
+            except Exception as e:
+                return Response({'messsage':'Unautoraized User1'},status.HTTP_401_UNAUTHORIZED)
+            
+
+        # Edit User
+        def put(self,request,**kwargs):
+
+            id=kwargs['id']
+            token=request.COOKIES.get('UrLoans')
+
+            try:
+                data=request.data
+                
+                if not token:
+                    return Response({'messsage':'Unautoraized User token'},status.HTTP_401_UNAUTHORIZED)
+                
+                obj=Propertyloan.objects.get(id=id)
+                print(obj)
+                serializer=PropertySerializer(obj,data=data)
+                if serializer.is_valid():
+                    serializer.save()
+                    return Response(serializer.data)
+                
+                return Response(serializer.errors)
+            
+            except Exception as e:
+                return Response({'messsage':'Unautoraized User'},status.HTTP_401_UNAUTHORIZED)
+            
+
+
+        # Delete
+        def delete(self,request,**kwargs):
+            try:
+                id=kwargs['id']
+                token=request.COOKIES.get('UrLoans')
+                if not token:
+                    return Response({'messsage':'Unautoraized User token'},status.HTTP_401_UNAUTHORIZED)
+                
+                obj=Propertyloan.objects.get(id=id)
+                obj.delete()
+                return Response({'message':'User was Deleted successfully'},status.HTTP_200_OK)
+
+            except Exception as e:
+                return Response({'messsage':'Unautoraized User'},status.HTTP_401_UNAUTHORIZED)

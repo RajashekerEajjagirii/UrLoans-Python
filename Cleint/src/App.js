@@ -26,6 +26,12 @@ import LAPList from "./pages/LAPList";
 import NotFound from "./pages/NotFound";
 import { BrowserRouter } from 'react-router-dom';
 import Queries from "./pages/Queries";
+import BlUserView from "./pages/BlUserView";
+import EditBusinessLoans from "./pages/EditBusinessLoans";
+import LapUserView from "./pages/LapUserView";
+import EditLAPLoans from "./pages/EditLAPLoans";
+import PlUserView from "./pages/PlUserView";
+import EditPLUser from "./pages/EditPLUser";
 
 const App=()=> {
 
@@ -63,8 +69,14 @@ const App=()=> {
             <Route path="homeloans/view/:id" element={<HlUserView/>} />
             <Route path="homeloans/edit/:id" element={<EditHomeLoans/>} />
             <Route path="personalloans" element={<PersonalLoansList />} />
+            <Route path="personalloans/view/:id" element={<PlUserView/>} />
+            <Route path="personalloans/edit/:id" element={<EditPLUser/>} />
             <Route path="businessloans" element={<BusinessLoansList />} />
+            <Route path="businessloans/view/:id" element={<BlUserView/>} />
+            <Route path="businessloans/edit/:id" element={<EditBusinessLoans/>} />
             <Route path="propertyloans" element={<LAPList />} />
+            <Route path="propertyloans/view/:id" element={<LapUserView/>} />
+            <Route path="propertyloans/edit/:id" element={<EditLAPLoans/>} />
             <Route path="queries" element={<Queries/>} />
           </Route>
           <Route path="/*" element={<NotFound/>} />

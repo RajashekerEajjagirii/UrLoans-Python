@@ -13,7 +13,11 @@ import useFetch from '../utils/useFetchData';
 import Loader from '../components/Loader';
 import {Pagination,Stack,Button} from '@mui/material';
 import {useReactToPrint} from "react-to-print";
-import {FiDownload} from "react-icons/fi"
+import {FiDownload} from "react-icons/fi";
+import { Link } from 'react-router-dom';
+import {Flip, toast,ToastContainer, Zoom} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import {Dialog,DialogActions,DialogTitle,DialogContent,DialogContentText,Slide} from '@mui/material';
 
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -38,7 +42,8 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 
 const PersonalLoansList=()=> {
-
+   const[open,setOpen]=useState(false);
+    const[id,setId]=useState();
   const componentPDF=useRef();
   const[currentPage,setCurrentPage]=useState(1);
   const recordsPerPage=5;
@@ -78,6 +83,42 @@ const PersonalLoansList=()=> {
   }
 
 
+//Delete Model Implementation
+const openModel=(id)=>{
+  setOpen(true);
+  setId(id);
+
+}
+
+const closeModal=()=>{
+  setOpen(false);
+}
+
+const handleDelete=async(id)=>{
+      const response= await fetch(`/personalloans/${id}/`,{
+        method:"DELETE",
+        headers:{"Content-Type":"application/json"},
+        credentials: "include",
+      });
+      if(response.status===200){
+          toast.promise(
+            new Promise((resolve,reject)=>{
+                setTimeout(()=>{
+                  resolve();  
+                },1000);
+            }),{
+                pending:"Loading...",
+                success:"User was deleted Successfully..!",
+                error:'Error recieved'
+            }
+          );
+      }
+      setOpen(false);
+      // location.reload();
+      // navigate('/adminhome/homeloans');
+}
+
+
   return (
     <Box >
       <Typography fontWeight={600} fontSize={20} mb={4} align='start'>
@@ -96,6 +137,7 @@ const PersonalLoansList=()=> {
             <StyledTableCell align="right">Mobile number</StyledTableCell>
             <StyledTableCell align="right">Loan Amount</StyledTableCell>
             <StyledTableCell align="right">City</StyledTableCell>
+            <StyledTableCell align="center">Actions</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -110,6 +152,13 @@ const PersonalLoansList=()=> {
               <StyledTableCell align="right">{row.mobileNum}</StyledTableCell>
               <StyledTableCell align="right">{row.loanAmount}</StyledTableCell>
               <StyledTableCell align="right">{row.city}</StyledTableCell>
+              <StyledTableCell >
+                <Stack direction="row" gap={1}>
+                  <Button variant='contained' color='primary' LinkComponent={Link} to={`/adminhome/personalloans/view/${row.id}`} >View</Button>
+                  <Button variant='contained' color='success' LinkComponent={Link} to={`/adminhome/personalloans/edit/${row.id}`}>Edit</Button>
+                  <Button variant='contained' color='error' onClick={()=>openModel(row.id)}>Delete</Button>
+                </Stack>
+              </StyledTableCell>
             </StyledTableRow>
             ))}
         </TableBody>
@@ -128,6 +177,38 @@ const PersonalLoansList=()=> {
             )
           }  
         </Stack >
+
+        {/* Model */}
+        <Dialog
+          open={open}
+          aria-describedby="alert-dialog-slide-description"
+        >
+            <DialogTitle>{"HomeLoans"}</DialogTitle>
+            <DialogContent>
+              <DialogContentText id="alert-dialog-slide-description">
+                Are you sure, Do you want to delete this User ?
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button variant='contained' color="success" onClick={()=>handleDelete(id)}>Yes</Button>
+              <Button variant="contained" color='error' onClick={closeModal}>No</Button>
+            </DialogActions>
+        </Dialog>
+
+        <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored"
+                transition={Flip}
+                
+        />
     </Box>
   );
 }

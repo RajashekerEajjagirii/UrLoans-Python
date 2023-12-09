@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box,Typography } from '@mui/material';
 import homeloan from "../assets/icons/home-loans.jpg"
-import personalloan from "../assets/icons/personal1.jpg"
+import personalloan from "../assets/icons/personal2.jpg"
 import business from "../assets/icons/business2.jpg"
 import property from "../assets/icons/property1.jpg"
 

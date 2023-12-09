@@ -25,7 +25,7 @@ const PropertyLoans = () => {
         padding:'50px 20px',
         margin:'30px auto',
         width:500,
-        height:600
+        height:700
     };
 
     const onSubmit=async(data)=>{
@@ -78,11 +78,11 @@ const PropertyLoans = () => {
                 <Paper elevation={10} style={PaperStyle}>
                     <Grid align='center' mb={7}>
                         <Avatar style={{backgroundColor:'blue'}}> <IoBusinessOutline fontSize={30}/> </Avatar>
-                        <h2 style={{marginTop:'15px'}}>Loan Against Property Loans</h2>
+                        <h4 style={{marginTop:'15px'}}>Loan Against Property Loans</h4>
                     </Grid>
 
                     <Grid mb={2}>
-                            <h4>Check Loan Against Property Eligibility</h4>
+                            <h6>Check Loan Against Property Eligibility</h6>
                     </Grid>
 
                     <form onSubmit={handleSubmit(onSubmit)}>
