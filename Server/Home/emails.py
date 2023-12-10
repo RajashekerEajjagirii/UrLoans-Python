@@ -1,7 +1,7 @@
 from django.core.mail import send_mail
 import random
 from django.conf import settings
-from .models import User,Homeloan,Businessloan,Personalloan,Propertyloan
+from .models import User,Homeloan,Businessloan,Personalloan,Propertyloan,Queries
 import uuid
 
 # vefiy Account through link
@@ -82,3 +82,16 @@ def send_email_token(email,name,type):
 #     user_obj=Businessloan.objects.get(email=email)
 #     user_obj.emailToken=emailToken
 #     user_obj.save()
+
+
+def send_email_query(id,name,email,query):
+
+    print(email)
+    subject="UrLoans- Ur Query Status Email"
+    message= f"Hi {name}, \n\n Hoping you, Everything is going Good. \n  Your Query '{query}' was resolved. \n   Thank you for Contact Us.. \n\n Regards, \n UrLoans Support Team"
+    email_from=settings.EMAIL_HOST_USER
+    print(email_from)
+    send_mail(subject,message,email_from,[email])
+    user_obj=Queries.objects.get(id=id)
+    user_obj.status=True
+    user_obj.save()

@@ -116,7 +116,7 @@ const Queries=()=> {
   }
 
   const handleDelete=async(id)=>{
-        const response= await fetch(`/homeloans/${id}/`,{
+        const response= await fetch(`/queries/${id}/`,{
           method:"DELETE",
           headers:{"Content-Type":"application/json"},
           credentials: "include",
@@ -137,6 +137,35 @@ const Queries=()=> {
         setOpen(false);
         // location.reload();
         // navigate('/adminhome/homeloans');
+  }
+
+
+  const querySolve=async(id,name,email,query)=>{
+    
+    try {
+      const response= await fetch(`/queries/${id}/${name}/${email}/${query}/`,{
+        method:"GET",
+        headers:{"Content-Type":"application/json"},
+        credentials: "include",
+      });
+
+      if(response.status===200){
+          toast.promise(
+            new Promise((resolve,reject)=>{
+                setTimeout(()=>{
+                  resolve();  
+                },1000);
+            }),{
+                pending:"Loading...",
+                success:"User query was resolved Successfully..!",
+                error:'Error recieved'
+            }
+          );
+      }
+    } catch (error) {
+      toast.error("Server Isssue");
+    }
+
   }
 
   // for Each deletion rendering
@@ -190,9 +219,9 @@ const Queries=()=> {
                 <StyledTableCell >
                   <Stack direction="row" gap={1}>
                     {status===false?
-                    <Button variant='contained' color='primary' LinkComponent={Link} to={`/adminhome/homeloans/view/${row.id}`}>Pending</Button>
+                    <Button variant='contained' color='primary' onClick={()=>querySolve(id,name,email,query)}>Pending</Button>
                     :
-                    <Button variant='contained' color='success' LinkComponent={Link} to={`/adminhome/homeloans/edit/${row.id}`}>Edit</Button> }
+                    <Button variant='contained' color='success' >Solved</Button> }
                     <Button variant='contained' color='error' onClick={()=>openModel(row.id)}>Delete</Button>
                     
                   </Stack>

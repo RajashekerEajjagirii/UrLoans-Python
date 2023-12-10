@@ -29,4 +29,6 @@ urlpatterns = [
     path('propertyloans/<int:id>/',LAPUserAPI.as_view()),
     # queries
     path('queries/', QueriesAPI.as_view()),
+    path('queries/<int:id>/<str:name>/<str:email>/<str:query>/',QueriesUserAPI.as_view()),
+    path('queries/<int:id>/',QueriesUserAPI.as_view()),
 ]
