@@ -27,7 +27,7 @@ const Footer = () => {
                     </NavLink>
                 </Stack>
             </Stack>
-            <Typography sx={{textAlign:'right',fontWeight:'bold', mb:'5px',mr:'30px'}}>
+            <Typography sx={{textAlign:'right',fontWeight:'bold', mb:'px',mr:'30px'}}>
             &copy; Coding with Raja, 2023
             </Typography>
             

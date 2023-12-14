@@ -1,6 +1,8 @@
 body {
   font-family: 'Josefin Sans';
-  background-color: #fff9f9;
+  /* background-color: #fff9f9; */
+  background-color: #E2D1F9;
+  /* #317773 */
 }
 
 /* * {
@@ -24,7 +26,7 @@ body {
 
 
 .service-card{
-  width: 300px;
+  width: 270px;
   height: 320px;
   background: #ddd9d9;
   border-top: 4px solid #8ca9ce;
@@ -98,9 +100,21 @@ body {
   /* margin-bottom: 50px; */
 }
 
-@media(min-width:480px){
+/* carsoul */
+
+.carsoul-img{
+  margin-left: 30px;
+  width: 70%;
+  height: 50%;
+  margin-top: 100px;
+}
+
+@media screen and (min-width:982px){
   .carsoul-img{
-    margin-left: 100px;
+    margin-left: 150px;
+    width: 70%;
+    height: 50%;
+    margin-top: 100px;
   }
 }
 
@@ -108,21 +122,22 @@ body {
   display: grid;
   grid-template-columns: 1fr;
   margin-left: 110px;
-  width: 60%;
+  width: 20%;
   margin-top: 30px;
+  gap: 1.5rem;
  
 }
 
 .partners{
-  width: 190px;
-  height: 190px;
+  width: 150px;
+  height: 100px;
 }
 
 @media screen and (min-width:980px) {
   .partners-img{
-    grid-template-columns:repeat(3,1fr);
-    margin-left: 310px;
-    gap:2rem;
+    grid-template-columns:repeat(9,1fr);
+    margin-left: 10px;
+    gap:0rem;
   }
 }
 
@@ -141,3 +156,92 @@ body {
   font-weight: bold;
 }
 .right{margin-left: 50px;}
+
+.app-bar{background-color: #317773;}
+
+
+
+/* Header Css */
+
+.navbar{
+  background-color: #fff;
+  height: 70px;
+  margin: 10px;
+  border-radius: 16px;
+  padding: 0.5rem;
+}
+
+.login-button{
+  background-color: #009970;
+  color: #fff;
+  font-size: 14px;
+  padding: 8px 20px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: 0.3s background-color ;
+}
+
+.login-button:hover{
+  background-color: #3d5bbe;
+}
+
+.navbar-toggler{
+  border: none;
+  font-size: 1.25rem;
+}
+
+.navbar-toggler:focus, .btn-close:focus{
+  box-shadow: none;
+  outline: none;
+}
+
+.nav-link{
+  color: #666777;
+  font-weight: 700;
+  position: relative;
+}
+
+.nav-link:hover, .nav-link.active{
+  color: #000;
+}
+
+@media(min-width:991px){
+  .nav-link::before{
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left:50%;
+      transform: translateX(-50%) ;
+      width: 0;
+      height: 2px;
+      background-color: #009970;
+      visibility: hidden;
+      transition: 0.3s ease-in-out;
+  }
+
+  .nav-link:hover:before, .nav-link.active::before{
+    width: 100%;
+    visibility:visible ;
+  }
+}
+
+.navbar-brand{
+  font-weight: 700;
+  color: #009970;
+  font-size: 28px;
+  transform: 0,3s color;
+}
+
+.offcanvas-title{
+  font-weight: 700;
+  color: #009970;
+  font-size: 24px;
+  transform: 0,3s color;
+}
+
+.welcome h6{
+  font-weight: 700;
+  color:rgb(202, 82, 12);
+  margin-right: 7px;
+  margin-top: 3px;
+}

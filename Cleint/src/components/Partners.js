@@ -53,31 +53,32 @@ const data=[
         id:9,
         name:'Bandan Bank',
         image:bandan
-    },{
-        id:10,
-        name:'PostOffice Bank',
-        image:post
-    },{
-        id:11,
-        name:'Syndicate Bank',
-        image:syndicate
-    },{
-        id:12,
-        name:'Telangana Bank',
-        image:tgb
     },
+    // {
+    //     id:10,
+    //     name:'PostOffice Bank',
+    //     image:post
+    // },{
+    //     id:11,
+    //     name:'Syndicate Bank',
+    //     image:syndicate
+    // },{
+    //     id:12,
+    //     name:'Telangana Bank',
+    //     image:tgb
+    // },
 ]
 
 function Partners(props) {
     return (
-        <div className='partner-block mt-5'>
-            <h3 className='text-center mt-5'>Our Partners</h3>
+        <div className='partner-block mt-0'>
+            <h3 className='text-center mt-0'>Our Partners</h3>
            <div className='partners-img'>
                 {data.map((part)=>{        
                     const {id,image,name}=part;
                     return <>
                         <div className='partners' key={id}>
-                            <img src={image} className='' alt={name} width='180px' height='120px'></img>
+                            <img src={image} className='' alt={name} width='120px' height='100px'></img>
                         </div>
                     </>
                 })}

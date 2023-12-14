@@ -1,4 +1,4 @@
-import React,{useEffect, useState,useRef} from 'react';
+import React,{useState,useRef} from 'react';
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -7,17 +7,15 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { Box, Typography,Card,CardContent,Stack, Button, IconButton } from '@mui/material';
-import { fetchData,Get_Options } from '../utils/useFetchData';
+import { Box, Typography,Card,CardContent,Stack, Button } from '@mui/material';
 import useFetch from '../utils/useFetchData';
 import Loader from '../components/Loader';
-import usePagination from '../utils/Pagination';
 import {Pagination} from '@mui/material';
 import {useReactToPrint} from "react-to-print";
 import {FiDownload} from "react-icons/fi";
-import { Link, useNavigate } from 'react-router-dom';
-import {Dialog,DialogActions,DialogTitle,DialogContent,DialogContentText,Slide} from '@mui/material';
-import {Flip, toast,ToastContainer, Zoom} from "react-toastify";
+import {useNavigate } from 'react-router-dom';
+import {Dialog,DialogActions,DialogTitle,DialogContent,DialogContentText} from '@mui/material';
+import {Flip, toast,ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -44,7 +42,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 const Queries=()=> {
     const componentPDF=useRef();
-    const navigate=useNavigate();
+    // const navigate=useNavigate();
     const[open,setOpen]=useState(false);
     const[id,setId]=useState();
     const[currentPage,setCurrentPage]=useState(1);

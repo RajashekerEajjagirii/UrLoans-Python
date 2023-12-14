@@ -55,7 +55,7 @@ const AdminHome = (props) => {
     
 
     return (
-        <Stack sx={{marginTop:5}} direction={{xs:'column',lg:'row'}} >
+        <Stack mt={{xs:15,lg:20}} direction={{xs:'column',lg:'row'}} >
             
 
             <Stack >

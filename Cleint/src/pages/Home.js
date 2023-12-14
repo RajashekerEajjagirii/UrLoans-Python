@@ -6,7 +6,7 @@ import Partners from '../components/Partners';
 
 const Home = () => {
     return (
-        <Box>
+        <Box >
             <HomeBanner/>
             <HomeServices/>
             <Partners/>

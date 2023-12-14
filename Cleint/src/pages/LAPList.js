@@ -135,10 +135,10 @@ const handleDelete=async(id)=>{
         <TableHead>
           <TableRow>
             <StyledTableCell>Name</StyledTableCell>
-            <StyledTableCell align="right">Email</StyledTableCell>
-            <StyledTableCell align="right">Mobile number</StyledTableCell>
-            <StyledTableCell align="right">Loan Amount</StyledTableCell>
-            <StyledTableCell align="right">City</StyledTableCell>
+            <StyledTableCell align="center">Email</StyledTableCell>
+            <StyledTableCell align="center">Mobile Number</StyledTableCell>
+            <StyledTableCell align="center">Loan Amount</StyledTableCell>
+            <StyledTableCell align="center">City</StyledTableCell>
             <StyledTableCell align="center">Actions</StyledTableCell>
           </TableRow>
         </TableHead>
@@ -150,10 +150,10 @@ const handleDelete=async(id)=>{
               <StyledTableCell component="th" scope="row">
                 {row.fullName}
               </StyledTableCell>
-              <StyledTableCell align="right">{row.email}</StyledTableCell>
-              <StyledTableCell align="right">{row.mobileNum}</StyledTableCell>
-              <StyledTableCell align="right">{row.loanAmount}</StyledTableCell>
-              <StyledTableCell align="right">{row.city}</StyledTableCell>
+              <StyledTableCell align="center">{row.email}</StyledTableCell>
+              <StyledTableCell align="center">{row.mobileNum}</StyledTableCell>
+              <StyledTableCell align="center">{row.loanAmount}</StyledTableCell>
+              <StyledTableCell align="center">{row.city}</StyledTableCell>
               <StyledTableCell >
                 <Stack direction="row" gap={1}>
                   <Button variant='contained' color='primary' LinkComponent={Link} to={`/adminhome/propertyloans/view/${row.id}`} >View</Button>

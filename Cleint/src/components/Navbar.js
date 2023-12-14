@@ -6,9 +6,10 @@ import { useAuthen } from '../utils/useAuthen';
 
 const Navbar = () => {
 
-    let admin=sessionStorage.getItem("dt");
-    const{adminInfo,logout}=useAuthen();
-    console.log(adminInfo);
+    // let admin=sessionStorage.getItem("dt");
+    let admin='';
+    // const{adminInfo,logout}=useAuthen();
+    // console.log(adminInfo);
     const navlinkStyles=({isActive})=>{
         return{
             textDecoration:isActive ? 'none':'none',
@@ -20,8 +21,8 @@ const Navbar = () => {
     };
 
     return (
-        <Stack direction='row' justifyContent='space-around'
-            sx={{gap:{sm:'122px',xs:'44px'},mt:{sm:'30px',xs:'20px'},justifyContent:'none'}} px='20px'>
+        <Stack direction='row' justifyContent='space-around' className='app-bar'
+            sx={{gap:{sm:'122px',xs:'44px'},mt:{sm:'0px',lg:'2px'},justifyContent:'none'}} px='20px'>
             <NavLink to='/' style={{textDecoration:'none'}} >
                 <img src={Logo} alt='UrLoans-Logo'
                 style={{width:'58px',height:'58px',margin:'0px 20px'}} />
@@ -42,7 +43,7 @@ const Navbar = () => {
                {admin? '': <NavLink to='/contact' style={navlinkStyles}>
                     Contact
                 </NavLink> }
-                {admin ? <NavLink to="/"  style={navlinkStyles} onClick={logout}> <Stack alignItems='flex-end' sx={{marginLeft:90}}>
+                {admin ? <NavLink to="/"  style={navlinkStyles} onClick={''}> <Stack alignItems='flex-end' sx={{marginLeft:90}}>
                     <Avatar style={{backgroundColor:'blue'}}></Avatar> <Typography>Logout</Typography> </Stack> </NavLink> :
                 <NavLink to='/login' style={navlinkStyles}>
                  Login

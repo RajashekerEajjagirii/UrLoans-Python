@@ -121,7 +121,7 @@ const handleDelete=async(id)=>{
 
   return (
     <Box >
-      <Typography fontWeight={600} fontSize={20} mb={4} align='start'>
+      <Typography fontWeight={600} fontSize={20} mb={4} >
             Personal Loans Users List:
       </Typography>
       <Stack alignItems='end' mb={4}>
@@ -132,11 +132,11 @@ const handleDelete=async(id)=>{
       <Table sx={{minWidth:786}} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell>Name</StyledTableCell>
-            <StyledTableCell align="right">Email</StyledTableCell>
-            <StyledTableCell align="right">Mobile number</StyledTableCell>
-            <StyledTableCell align="right">Loan Amount</StyledTableCell>
-            <StyledTableCell align="right">City</StyledTableCell>
+            <StyledTableCell align="center">Name</StyledTableCell>
+            <StyledTableCell align="center">Email</StyledTableCell>
+            <StyledTableCell align="center">Mobile Number</StyledTableCell>
+            <StyledTableCell align="center">Loan Amount</StyledTableCell>
+            <StyledTableCell align="center">City</StyledTableCell>
             <StyledTableCell align="center">Actions</StyledTableCell>
           </TableRow>
         </TableHead>
@@ -145,13 +145,11 @@ const handleDelete=async(id)=>{
             CurrentRecords.map((row) => (
              
             <StyledTableRow key={row.id}>
-              <StyledTableCell component="th" scope="row">
-                {row.fullName}
-              </StyledTableCell>
-              <StyledTableCell align="right">{row.email}</StyledTableCell>
-              <StyledTableCell align="right">{row.mobileNum}</StyledTableCell>
-              <StyledTableCell align="right">{row.loanAmount}</StyledTableCell>
-              <StyledTableCell align="right">{row.city}</StyledTableCell>
+              <StyledTableCell component="th" scope="row">{row.fullName} </StyledTableCell>
+              <StyledTableCell align="center">{row.email}</StyledTableCell>
+              <StyledTableCell align="center">{row.mobileNum}</StyledTableCell>
+              <StyledTableCell align="center">{row.loanAmount}</StyledTableCell>
+              <StyledTableCell align="center">{row.city}</StyledTableCell>
               <StyledTableCell >
                 <Stack direction="row" gap={1}>
                   <Button variant='contained' color='primary' LinkComponent={Link} to={`/adminhome/personalloans/view/${row.id}`} >View</Button>

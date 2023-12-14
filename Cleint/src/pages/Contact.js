@@ -51,7 +51,7 @@ const Contact = () => {
 console.log(errors);
     return (
         <Grid>
-            <Card sx={{maxWidth:{lg:925},minHeight:{lg:450},background:'#dcf5f4',ml:{lg:30},mt:5}}> 
+            <Card sx={{maxWidth:{lg:925},minHeight:{lg:450},background:'#dcf5f4',ml:{lg:30},mt:15}}> 
                 <Card sx={{maxWidth:{lg:295,xs:220},background:'#edd5c5',mt:5,ml:{lg:5,xs:1},minHeight:{lg:350,xs:100},mb:{lg:10,xs:15}}}>
                     <CardContent>
                         <h2>Contact Info</h2>

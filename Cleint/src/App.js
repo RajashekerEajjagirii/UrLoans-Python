@@ -32,6 +32,7 @@ import LapUserView from "./pages/LapUserView";
 import EditLAPLoans from "./pages/EditLAPLoans";
 import PlUserView from "./pages/PlUserView";
 import EditPLUser from "./pages/EditPLUser";
+import Header from "./components/Header";
 
 const App=()=> {
 
@@ -50,9 +51,9 @@ const App=()=> {
 
   return (
     <>
-      
+        <Header  name={name} setName={setName} />
         {/* <Navbar /> */}
-        <Appbar name={name} setName={setName} />
+        {/* <Appbar name={name} setName={setName} /> */}
 
         <Routes>
           <Route path="/" element={<Home />} />

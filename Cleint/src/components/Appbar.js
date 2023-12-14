@@ -43,7 +43,7 @@ function Appbar(props) {
     }
 
   return (
-    <AppBar position="static" >
+    <AppBar position="static" className='app-bar' >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
         <Stack direction='row' justifyContent='space-around'

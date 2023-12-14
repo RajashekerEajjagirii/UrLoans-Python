@@ -3,7 +3,7 @@ import React from 'react';
 
 const About = () => {
     return (
-        <Card sx={{maxWidth:{lg:575}, background:'#e6e8eb',ml:{lg:45},mt:{lg:10}}}>
+        <Card sx={{maxWidth:{lg:575,xs:400}, background:'#e6e8eb',ml:{lg:45,xs:3},mt:{lg:20,xs:15},mb:{lg:25,xs:27}}}>
             <CardMedia>
 
             </CardMedia>

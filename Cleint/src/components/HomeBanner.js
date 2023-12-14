@@ -4,42 +4,51 @@ import homeloan from "../assets/icons/home-loans.jpg"
 import personalloan from "../assets/icons/personal2.jpg"
 import business from "../assets/icons/business2.jpg"
 import property from "../assets/icons/property1.jpg"
+import { NavLink } from 'react-router-dom';
 
 
 const HomeBanner = () => {
     return (
-        <Box sx={{mt:{lg:'30px', xs:'30px'},ml:{xs:'50px'}}}>
+        <Box sx={{mt:{lg:'30px', xs:'30px'},ml:{xs:'50px'}}} >
 
-            <div class="col-10 carsoul-img" >
+            <div class="carsoul-img" >
                 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src={homeloan} class="rounded w-100" alt="HomeLoans"/>
-                            <div class="carousel-caption d-none d-md-block">
-                            <h3>Home Loans</h3>
-                            <p>...</p>
-                        </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img src={personalloan} class="rounded w-100" alt="PersonalLoans"/>
-                            <div class="carousel-caption d-none d-md-block">
-                            <h3>Persoanal Loans</h3>
-                            <p>...</p>
-                        </div>
+                            <NavLink to='/homeloans'>
+                                <img src={homeloan} class="rounded w-100" alt="HomeLoans"/> 
+                                <div class="carousel-caption d-none d-md-block">
+                                <h3>Home Loans</h3>
+                                <p>...</p>   
+                                </div>
+                            </NavLink>     
                         </div>
                         <div class="carousel-item">
-                            <img src={business} class="rounded w-100" alt="BusinessLoans"/>
-                            <div class="carousel-caption d-none d-md-block">
-                            <h3>Business Loans</h3>
-                            <p>...</p>
-                        </div>
+                            <NavLink to='/personalloans'>
+                                <img src={personalloan} class="rounded w-100" alt="PersonalLoans"/>
+                                <div class="carousel-caption d-none d-md-block">
+                                <h3>Persoanal Loans</h3>
+                                <p>...</p>
+                                </div>
+                            </NavLink>    
                         </div>
                         <div class="carousel-item">
-                        <img src={property} class="rounded w-100" alt="PropertyLoans"/>
-                        <div class="carousel-caption d-none d-md-block">
-                            <h3>Property Loans</h3>
-                            <p>...</p>
+                           <NavLink to='/businessloans'>
+                                <img src={business} class="rounded w-100" alt="BusinessLoans"/>                           
+                                <div class="carousel-caption d-none d-md-block">
+                                <h3>Business Loans</h3>
+                                <p>...</p>
+                                </div>
+                            </NavLink>    
                         </div>
+                        <div class="carousel-item">
+                            <NavLink to='/propertyloans'>   
+                                <img src={property} class="rounded w-100" alt="PropertyLoans"/>
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h3>Property Loans</h3>
+                                    <p>...</p>
+                                </div>
+                            </NavLink>
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -64,33 +73,7 @@ const HomeBanner = () => {
             <Typography fontWeight={600} color='#42adf5' sx={{opacity:0.2,display:'block'}} fontSize='130px'>
                 URLOANS
             </Typography>
-
-            {/* <div class=""> */}
-            {/* <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src={homeloan} class="rounded w-100" alt="HomeLoans"/>
-                    </div>
-                    <div class="carousel-item">
-                        <img src={personalloan} class="rounded w-100" alt="PersonalLoans"/>
-                    </div>
-                    <div class="carousel-item">
-                        <img src={business} class="rounded w-100" alt="BusinessLoans"/>
-                    </div>
-                    <div class="carousel-item">
-                      <img src={property} class="rounded w-100" alt="BusinessLoans"/>
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div> */}
-            {/* </div> */}
+            
         </Box>
     );
 };
