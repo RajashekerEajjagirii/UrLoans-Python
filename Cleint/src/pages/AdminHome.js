@@ -53,6 +53,54 @@ const AdminHome = (props) => {
         textAlign:"center"
     }
     
+    // Inactivity User
+    const checkForInactive=()=>{
+        const expireTime=localStorage.getItem("expireTime");
+        if(expireTime< Date.now()){
+            alert('Session Expired');
+            sessionStorage.removeItem("access");
+            window.location.href="/";
+        }
+    }
+
+    const upadateExpireTime=()=>{
+      
+        const expireTime=Date.now()+5000;
+        localStorage.setItem("expireTime",expireTime);
+    }
+
+    // set user expire time on user Inactivity
+    useEffect(()=>{
+        // Set first expire time
+        upadateExpireTime();
+
+        // set event listners
+        window.addEventListener("click",upadateExpireTime);
+        window.addEventListener("keypress",upadateExpireTime);
+        window.addEventListener("scroll",upadateExpireTime);
+        window.addEventListener("mousemove",upadateExpireTime);
+
+        return()=>{
+            window.removeEventListener("click",upadateExpireTime);
+            window.removeEventListener("keypress",upadateExpireTime);
+            window.removeEventListener("scroll",upadateExpireTime);
+            window.removeEventListener("mousemove",upadateExpireTime);
+        }
+    },[]);
+
+    // useEffect to set time interval
+    useEffect(()=>{
+
+        //check inactivity for every 5 sec
+        const interval=setInterval(()=>{
+            checkForInactive();
+        },50000);
+        
+        //clear interval on unmount 
+        return()=>clearInterval(interval);
+    },[]);
+
+
 
     return (
         <Stack mt={{xs:15,lg:20}} direction={{xs:'column',lg:'row'}} >
@@ -171,15 +219,7 @@ const AdminHome = (props) => {
               
             </Stack>
             <Stack sx={{ml:{xs:2,lg:15}}}  mt={5}>
-                {/* <Card style={cardStyle}>
-                    <CardContent>
-                       {name? <Box>
-                        <Typography>Hi {name},</Typography><br/>
-                         <Typography>Welcome to AdminHome Page</Typography>
-                        </Box>
-                        :'Your not logged In'}
-                    </CardContent>
-                </Card> */}
+                
                 <Outlet/>
             </Stack>
 
