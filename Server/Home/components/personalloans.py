@@ -12,7 +12,7 @@ class PersonalloanAPI(APIView):
     def post(self,request):        
         try:
             data=request.data
-            print(data)
+            # print(data)
             serializer=PersonalSerializer(data=data)
             
             if serializer.is_valid():
@@ -54,7 +54,7 @@ class PersonalloanAPI(APIView):
 
             payload=jwt.decode(token,'secret',algorithms=['HS256'])
             user=Personalloan.objects.all().order_by('-createdAt').values()
-            print(user)
+            # print(user)
             serializer=PersonalSerializer(user,many=True)
             return Response(serializer.data)
 
@@ -97,7 +97,7 @@ class PLUserAPI(APIView):
                     return Response({'messsage':'Unautoraized User token'},status.HTTP_401_UNAUTHORIZED)
                 
                 obj=Personalloan.objects.get(id=id)
-                print(obj)
+                # print(obj)
                 serializer=PersonalSerializer(obj,data=data)
                 if serializer.is_valid():
                     serializer.save()

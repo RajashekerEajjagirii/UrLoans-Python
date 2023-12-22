@@ -15,14 +15,14 @@ class BusinessloanAPI(APIView):
             serializer=BusinessSerializer(data=data)
 
             if serializer.is_valid():
-                print(data['email'])
+                # print(data['email'])
 
                 if Businessloan.objects.filter(email=data['email']).exists():
                     return Response({"status":False,"message":"Email is already exists"},status.HTTP_226_IM_USED)
                 
 
                 serializer.save()
-                print('saved records')
+                # print('saved records')
                 send_email_token(serializer.data['email'],serializer.data['fullName'],'businessloans')
                 return Response({
                     'status':True,
@@ -55,7 +55,7 @@ class BusinessloanAPI(APIView):
 
             payload=jwt.decode(token,'secret',algorithms=['HS256'])
             user=Businessloan.objects.all().order_by('-createdAt').values()
-            print(user)
+            # print(user)
             serializer=BusinessSerializer(user,many=True)
             return Response(serializer.data)
         
@@ -94,7 +94,7 @@ class BlUserAPI(APIView):
                 return Response({'messsage':'Unautoraized User token'},status.HTTP_401_UNAUTHORIZED)
             
             obj=Businessloan.objects.get(id=id)
-            print(obj)
+            # print(obj)
             serializer=BusinessSerializer(obj,data=data)
             if serializer.is_valid():
                 serializer.save()

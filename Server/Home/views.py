@@ -108,8 +108,8 @@ class LoginAPI(APIView):
 
                 # user=User.objects.filter(email= email)
                 user=authenticate(email=email,password=password)
-                print("****User****")
-                print(user)
+                # print("****User****")
+                # print(user)
                 if not user:
                     return Response({
                         'status':False,
@@ -183,7 +183,7 @@ class UserAPI(APIView):
             return Response({'messsage':'Unautoraized User'},status.HTTP_401_UNAUTHORIZED)
         
         user=User.objects.filter(email=payload['email']).first()
-        print(user)
+        # print(user)
         serializer=UserSerializer(user)
         return Response(serializer.data)
     

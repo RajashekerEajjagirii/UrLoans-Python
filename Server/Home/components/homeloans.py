@@ -39,7 +39,7 @@ class HLUserAPI(APIView):
                 return Response({'messsage':'Unautoraized User token'},status.HTTP_401_UNAUTHORIZED)
             
             obj=Homeloan.objects.get(id=id)
-            print(obj)
+            # print(obj)
             serializer=HomeloanSerializer(obj,data=data)
             if serializer.is_valid():
                 serializer.save()
@@ -76,7 +76,7 @@ class HomeloanAPI(APIView):
             serializer=HomeloanSerializer(data=data)
 
             if serializer.is_valid():
-                print(data['email'])
+                # print(data['email'])
                 if Homeloan.objects.filter(email=data['email']).exists():
                     return Response({"status":False,"message":"Email is already exists"},status.HTTP_226_IM_USED)
                 
@@ -115,7 +115,7 @@ class HomeloanAPI(APIView):
         try:
             payload=jwt.decode(token,'secret',algorithms=['HS256'])
             user=Homeloan.objects.all().order_by('-createdAt').values()
-            print(user)
+            # print(user)
             serializer=HomeloanSerializer(user,many=True)
             return Response(serializer.data)
 

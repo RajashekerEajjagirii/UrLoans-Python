@@ -135,8 +135,9 @@ const HomeloansList=()=> {
             );
         }
         setOpen(false);
-        // location.reload();
-        // navigate('/adminhome/homeloans');
+        // window.location.href="/adminhome/homeloans";
+        // window.location.reload();
+
   }
 
   // for Each deletion rendering

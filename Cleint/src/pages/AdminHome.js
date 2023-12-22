@@ -65,7 +65,8 @@ const AdminHome = (props) => {
 
     const upadateExpireTime=()=>{
       
-        const expireTime=Date.now()+5000;
+        const expireTime=Date.now()+150000;
+        
         localStorage.setItem("expireTime",expireTime);
     }
 
@@ -94,7 +95,7 @@ const AdminHome = (props) => {
         //check inactivity for every 5 sec
         const interval=setInterval(()=>{
             checkForInactive();
-        },50000);
+        },100000);
         
         //clear interval on unmount 
         return()=>clearInterval(interval);

@@ -56,7 +56,7 @@ class PropertyloanAPI(APIView):
 
             payload=jwt.decode(token,'secret',algorithms=['HS256'])
             user=Propertyloan.objects.all().order_by('-createdAt').values()
-            print(user)
+            # print(user)
             serializer=PropertySerializer(user,many=True)
             return Response(serializer.data)
         
@@ -101,7 +101,7 @@ class LAPUserAPI(APIView):
                     return Response({'messsage':'Unautoraized User token'},status.HTTP_401_UNAUTHORIZED)
                 
                 obj=Propertyloan.objects.get(id=id)
-                print(obj)
+                # print(obj)
                 serializer=PropertySerializer(obj,data=data)
                 if serializer.is_valid():
                     serializer.save()
