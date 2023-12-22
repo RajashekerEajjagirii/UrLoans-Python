@@ -134,7 +134,7 @@ class LoginAPI(APIView):
                 # set_cookie using JWT Token
                 payload={
                     'email':user.email,
-                    'exp':datetime.datetime.utcnow() + datetime.timedelta(minutes=60),
+                    'exp':datetime.datetime.utcnow() + datetime.timedelta(minutes=1),
                     'iat':datetime.datetime.utcnow()
                 }
 
@@ -172,20 +172,23 @@ class LoginAPI(APIView):
 class UserAPI(APIView):
     
     def get(self,request):
-        token=request.COOKIES.get('UrLoans')
-
-        if not token:
-            return Response({'messsage':'Unautoraized User token'},status.HTTP_401_UNAUTHORIZED)
+        
         try:
+            token=request.COOKIES.get('UrLoans')
             payload=jwt.decode(token,'secret',algorithms=['HS256'])
+
+            if not token:
+                return Response({'messsage':'Unautoraized User token'},status.HTTP_401_UNAUTHORIZED)
+            
+            user=User.objects.filter(email=payload['email']).first()
+            # print(user)
+            serializer=UserSerializer(user)
+            return Response(serializer.data)
         
         except Exception as e:
             return Response({'messsage':'Unautoraized User'},status.HTTP_401_UNAUTHORIZED)
         
-        user=User.objects.filter(email=payload['email']).first()
-        # print(user)
-        serializer=UserSerializer(user)
-        return Response(serializer.data)
+        
     
 
 class LogoutAPI(APIView):
