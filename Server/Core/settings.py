@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-3i_g)z@49%fi2@u8r8eiy6(4hu5#pnu$5dp&e2uf9_h(00_txv
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.vercel.app','.now.sh','127.0.0.1','localhost']
 AUTH_USER_MODEL  = 'Home.User'
 # AUTHENTICATION_BACKENDS = ['Home.backends.EmailBackend']
 
@@ -82,10 +82,24 @@ WSGI_APPLICATION = 'Core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+
+# Railway Postgrel
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER':'postgres',
+        'PASSWORD':'DBaeA-DBe6*A66bbEafGF3*dc6Ab4B*2',
+        'HOST':'monorail.proxy.rlwy.net',
+        'PORT':'42757'
     }
 }
 
@@ -125,6 +139,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+
+# for prod setup
+# STATICFILES_DIRS=os.path.join(BASE_DIR,'static'),
+# STATIC_ROOT=os.path.join(BASE_DIR, 'staticfiles_build','static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
