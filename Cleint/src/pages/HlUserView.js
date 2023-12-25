@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Avatar,Typography, Button, Stack, List, ListItem, Divider, Card, CardContent, CardActions, CardMedia } from '@mui/material';
 import {FaHome} from "react-icons/fa";
-import {Flip, toast,ToastContainer, Zoom} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import {useParams,Link} from "react-router-dom";
 import {ImCancelCircle} from 'react-icons/im';
@@ -70,7 +69,7 @@ const HlUserView = () => {
                         
                         <Stack> 
                             <Card sx={{minWidth:{xs:200,lg:75},marginLeft:{lg:5,xs:2}}}> 
-                            { user && <List >
+                            { user && <List key={user.id}>
                                     <ListItem>{user.fullName}</ListItem><Divider/>
                                     <ListItem>{user.email}</ListItem><Divider/>
                                     <ListItem>{user.mobileNum}</ListItem><Divider/>

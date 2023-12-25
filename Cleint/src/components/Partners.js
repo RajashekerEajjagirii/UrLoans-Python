@@ -11,7 +11,7 @@ import canara from '../assets/images/canara.png'
 import citibank from '../assets/images/citibank.jpg'
 import bandan from '../assets/images/bandhanbank.jpg'
 import post from '../assets/images/Indianpost.png'
-import syndicate from '../assets/images/syndicate.png'
+import punjab from '../assets/images/punjab.png'
 import tgb from '../assets/images/telangana.png'
 
 
@@ -20,53 +20,65 @@ const data=[
     {
         id:1,
         name:'Axis Bank',
-        image:axis
+        image:axis,
+        link:'https://www.axisbank.com/'
     },{
         id:2,
         name:'ICICC',
-        image:icici
+        image:icici,
+        link:'https://www.icicibank.com/'
     },{
         id:3,
         name:'SBI Bank',
-        image:sbi
+        image:sbi,
+        link:'https://www.onlinesbi.sbi'
     },{
         id:4,
         name:'Kotak Bank',
-        image:kotak
+        image:kotak,
+        link:'https://www.kotak.com/en/home.html'
     },{
         id:5,
         name:'Union Bank',
-        image:union
+        image:union,
+        link:'https://www.unionbankofindia.co.in/english/home.aspx'
     },{
         id:6,
         name:'HDFC Bank',
-        image:hdfc
+        image:hdfc,
+        link:'https://www.hdfcbank.com/'
     },{
         id:7,
         name:'Canara Bank',
-        image:canara
+        image:canara,
+        link:'https://canarabank.com/'
     },{
         id:8,
         name:'Citi Bank',
-        image:citibank
+        image:citibank,
+        link:'https://www.online.citibank.co.in/'
     },{
         id:9,
         name:'Bandan Bank',
-        image:bandan
+        image:bandan,
+        link:'https://bandhanbank.com/'
     },
-    // {
-    //     id:10,
-    //     name:'PostOffice Bank',
-    //     image:post
-    // },{
-    //     id:11,
-    //     name:'Syndicate Bank',
-    //     image:syndicate
-    // },{
-    //     id:12,
-    //     name:'Telangana Bank',
-    //     image:tgb
-    // },
+    {
+        id:10,
+        name:'PostOffice Bank',
+        image:post,
+        link:'https://www.ippbonline.com/'
+    },{
+        id:11,
+        name:'Punjab Bank',
+        image:punjab,
+        link:'https://www.pnbindia.in/'
+    },{
+        id:12,
+        name:'Telangana Bank',
+        image:tgb,
+        link:'https://tgbhyd.in/'
+    },
 ]
 
 function Partners(props) {
@@ -75,10 +87,12 @@ function Partners(props) {
             <h3 className='text-center mt-0'>Our Partners</h3>
            <div className='partners-img'>
                 {data.map((part)=>{        
-                    const {id,image,name}=part;
+                    const {id,image,name,link}=part;
                     return <>
                         <div className='partners' key={id}>
-                            <img src={image} className='' alt={name} width='120px' height='100px'></img>
+                            <a href={link} target='_blank' rel="noreferrer">
+                            <img src={image} className='' alt={name} width='100px' height='50px'></img>
+                            </a>
                         </div>
                     </>
                 })}

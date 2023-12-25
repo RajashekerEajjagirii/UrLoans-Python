@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Avatar,Container,Grid,Paper,Typography,TextField,InputAdornment,Checkbox,FormControlLabel, Button, MenuItem, Stack } from '@mui/material';
 import {FaHome} from "react-icons/fa";
 import {FaArrowRightLong} from 'react-icons/fa6';
 import {useForm} from "react-hook-form"
-import {Flip, toast,ToastContainer, Zoom} from "react-toastify";
+import {Flip, toast,ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 const occupationType=[
@@ -38,17 +38,10 @@ const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 const HomeLoan = () => {
 
     const {register, handleSubmit, formState:{errors}, reset}=useForm();
-    const [homeLoanData,setHomeLoanData]=useState();
 
-    const PaperStyle={
-            padding:'60px 20px',
-            // margin:'20px auto',
-            width:500,
-            height:1400
-    };
+
      const onSubmit=async(data)=>{
             // console.log(data);
-            setHomeLoanData(data);
             
             // Adding HomeLoans users data
             try{
@@ -99,7 +92,7 @@ const HomeLoan = () => {
         sx={{ mt: { lg: "110px", xs: "90px" }, ml: { xs: "50px" }, mb: "0px" }}
         direction={{ lg: "row", xs: "column" }}
       >
-        <Stack mb={{ xs: "20px" }}>
+        <Stack mb={{ xs: "40px" }} width={900}>
           <Typography
             fontWeight="900"
             fontSize="16px"
@@ -122,9 +115,9 @@ const HomeLoan = () => {
             every step of the way..."
           </Typography>
         </Stack>
-        <Stack  ml={{lg:"50px" }}>
+        <Stack  width={900} >
           <Container>
-            <Paper elevation={10} style={PaperStyle}>
+            <Paper elevation={10}  className='paper-style'>
               <Grid align="center" mb={7}>
                 <Avatar style={{ backgroundColor: "blue" }}>
                   {" "}
@@ -288,7 +281,8 @@ const HomeLoan = () => {
                   fullWidth
                   {...register("address", { required: "Address is required" })}
                 />
-                {/* <p className='error'>{errors.address?.message}</p> */}
+                <label className="error">{errors.address?.message}</label>
+                <br/>
 
                 <FormControlLabel
                   control={<Checkbox size="small" value={"cheked"} />}

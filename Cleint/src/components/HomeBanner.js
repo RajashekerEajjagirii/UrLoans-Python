@@ -70,7 +70,7 @@ const HomeBanner = () => {
             </Typography>
 
             {/* <img src={HomeImg} alt='Home-image' className='home-banner-image'/> */}
-            <Typography fontWeight={600} color='#42adf5' sx={{opacity:0.2,display:'block'}} fontSize='130px'>
+            <Typography className='urloans-text' fontWeight={600} color='#42adf5' sx={{opacity:0.2,display:'block'}} >
                 URLOANS
             </Typography>
             

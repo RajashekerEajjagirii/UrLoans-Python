@@ -1,28 +1,18 @@
-import React, { useState } from 'react';
-import { Avatar, Box,Container,Grid,Paper,Typography,TextField,FormControlLabel,Checkbox,Button, Stack } from '@mui/material';
-import UrLoansImg from "../assets/images/UrLoansImg.png";
+import React from 'react';
+import { Avatar,Container,Grid,Paper,Typography,TextField,FormControlLabel,Checkbox,Button, Stack } from '@mui/material';
 import {LiaBusinessTimeSolid} from "react-icons/lia";
 import {FaArrowRightLong} from 'react-icons/fa6';
 import {useForm} from "react-hook-form";
-import {Flip, toast,ToastContainer, Zoom} from "react-toastify";
+import {Flip, toast,ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 const BusinessLoan = () => {
 
-    const[businessData,setBusinessData]=useState();
 
     const{ register, handleSubmit,formState:{errors},reset}= useForm();
 
-    const PaperStyle={
-        padding:'50px 20px',
-        margin:'30px auto',
-        width:500,
-        height:800
-    };
-
     const onSubmit=async(data)=>{
         // console.log(data);
-        setBusinessData(data);
 
             //Adding BusinessLoans customers list
             try{
@@ -56,7 +46,7 @@ const BusinessLoan = () => {
 
     return (
         <Stack sx={{mt:{mt:'110px',xs:'90px',sm:'90px'}}} ml={5} direction={{lg:'row',xs:'column'}}>
-            <Stack mb={{ xs: "20px" }}>
+            <Stack mb={{ xs: "40px" }} width={900}>
             <Typography fontWeight='900' fontSize='16px' color='#42adf5' mb='20px'>
                 URLOANS Club
             </Typography>
@@ -67,9 +57,9 @@ const BusinessLoan = () => {
             </Typography>
             </Stack>
 
-            <Stack ml={{lg:"50px" }}>
+            <Stack ml={{lg:"50px" }} width={900}>
                 <Container>
-                    <Paper elevation={10} style={PaperStyle}>
+                    <Paper elevation={10} className='paper-style-2'>
                         <Grid align='center' mb={7}>
                             <Avatar style={{backgroundColor:'blue'}}> <LiaBusinessTimeSolid fontSize={30}/> </Avatar>
                             <h4 style={{marginTop:'15px'}}>Business Loans</h4>

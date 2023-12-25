@@ -1,36 +1,26 @@
-import React, { useState } from 'react';
-import { Avatar, Box,Container,Grid,Paper,Typography,TextField,FormControlLabel,Checkbox,Button, Stack } from '@mui/material';
-import UrLoansImg from "../assets/images/UrLoansImg.png";
+import React from 'react';
+import { Avatar,Container,Grid,Paper,Typography,TextField,FormControlLabel,Checkbox,Button, Stack } from '@mui/material';
 import {IoBusinessOutline} from "react-icons/io5";
 import {FaArrowRightLong} from 'react-icons/fa6';
 import {useForm} from "react-hook-form";
-import {Flip, toast,ToastContainer, Zoom} from "react-toastify";
+import {Flip, toast,ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 const PropertyLoans = () => {
 
 
-    const[propertyData,setPropertyData]=useState();
-
     const{ register, handleSubmit,formState:{errors},reset}= useForm();
         
         //validation tostify messages
-        toast.warning(errors.fullName?.message);
-        toast.warning(errors.email?.message);
-        toast.warning(errors.mobileNum?.message);
-        toast.warning(errors.city?.message);
-        toast.warning(errors.loanAmount?.message);
+        toast.error(errors.fullName?.message);
+        toast.error(errors.email?.message);
+        toast.error(errors.mobileNum?.message);
+        toast.error(errors.city?.message);
+        toast.error(errors.loanAmount?.message);
 
-    const PaperStyle={
-        padding:'50px 20px',
-        margin:'30px auto',
-        width:500,
-        height:700
-    };
 
     const onSubmit=async(data)=>{
         console.log(data);
-        setPropertyData(data);
 
         try{
             const response= await fetch("/propertyloans/",{
@@ -62,7 +52,7 @@ const PropertyLoans = () => {
 
     return (
         <Stack sx={{mt:{mt:'110px',xs:'90px',sm:'90px'}}} ml={5} direction={{lg:'row',xs:'column'}}>
-            <Stack mb={{ xs: "50px" }}>
+            <Stack mb={{ xs: "50px" }} width={900}>
             <Typography fontWeight='900' fontSize='16px' color='#42adf5' mb='20px'>
                 URLOANS Club
             </Typography>
@@ -73,9 +63,9 @@ const PropertyLoans = () => {
             </Typography>
             </Stack>
 
-            <Stack ml={{lg:"50px" }}>
+            <Stack  width={900}>
             <Container>
-                <Paper elevation={10} style={PaperStyle}>
+                <Paper elevation={10} className='paper-style-2'>
                     <Grid align='center' mb={7}>
                         <Avatar style={{backgroundColor:'blue'}}> <IoBusinessOutline fontSize={30}/> </Avatar>
                         <h4 style={{marginTop:'15px'}}>Loan Against Property Loans</h4>
