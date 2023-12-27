@@ -13,7 +13,7 @@ const Header = (props) => {
             
         })
 
-        localStorage.removeItem('access'); 
+        sessionStorage.removeItem('access'); 
         setName('');
           
     }

@@ -45,7 +45,7 @@ const HomeLoan = () => {
             
             // Adding HomeLoans users data
             try{
-                 const response=await fetch("https://ur-loans.vercel.app/api/homeloans/",{
+                 const response=await fetch("/homeloans/",{
                         method:"POST",
                         headers:{"Content-Type":"application/json"},
                         credentials:'include',

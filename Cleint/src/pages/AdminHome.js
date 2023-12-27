@@ -23,7 +23,7 @@ const AdminHome = (props) => {
        ( 
             async()=>{
                 try{
-                    const response=await fetch("https://ur-loans.vercel.app/api/user/",{
+                    const response=await fetch("/user/",{
                         method:"GET",
                         headers:{"Content-Type":"application/json"},
                         credentials: 'include',
@@ -32,14 +32,14 @@ const AdminHome = (props) => {
                     const data= await response.json();
                     setName(data.first_name);
                     if(response.status===200){
-                        localStorage.setItem('access',data.first_name);                   
+                    sessionStorage.setItem('access',data.first_name);                   
                     }else if(response.status===401){
                         alert('Cookie is Expired,Please re-Login...');
-                        localStorage.removeItem("access");                        
+                        sessionStorage.removeItem("access");                        
                         window.location.href="/";
                     }    
                 }catch(error){
-                    toast('Your Cookie was expired');
+                    toast('token expired');
                 }
             }    
 
@@ -62,8 +62,8 @@ const AdminHome = (props) => {
     const checkForInactive=()=>{
         const expireTime=localStorage.getItem("expireTime");
         if(expireTime< Date.now()){
-            alert('Your Session was Expired');
-            localStorage.removeItem("access");
+            alert('Session Expired');
+            sessionStorage.removeItem("access");
             window.location.href="/";
         }
     }

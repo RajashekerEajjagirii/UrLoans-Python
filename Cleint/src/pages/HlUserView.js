@@ -16,7 +16,7 @@ const HlUserView = () => {
        
         async function getUser(){
             console.log(id);
-            const response=await fetch(`https://ur-loans.vercel.app/api/homeloans/${id}/`,{
+            const response=await fetch(`/homeloans/${id}/`,{
                 method:"GET",
                 headers:{"Content-Type":"application/json"},
                 credentials: 'include',

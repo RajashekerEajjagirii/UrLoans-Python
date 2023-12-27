@@ -75,7 +75,7 @@ const EditHomeLoans = () => {
      //const defaultValues={fullName:'',email:'',mobileNum:'',city:''}
      const {register, handleSubmit, formState:{errors},reset}=useForm({
       defaultValues:async ()=>{
-        const response=await fetch(`https://ur-loans.vercel.app/api/homeloans/${id}/`,{
+        const response=await fetch(`/homeloans/${id}/`,{
           method:"GET",
           headers:{"Content-Type":"application/json"},
           credentials: 'include',
