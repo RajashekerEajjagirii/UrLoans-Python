@@ -49,7 +49,7 @@ const HomeloansList=()=> {
     const[id,setId]=useState();
     const[currentPage,setCurrentPage]=useState(1);
     const recordsPerPage=5;
-    const[userData,isLoading,isError]=useFetch("/homeloans/");
+    const[userData,isLoading,isError]=useFetch("https://ur-loans.vercel.app/api/homeloans/");
     
 
     //Print PDF
@@ -96,7 +96,7 @@ const HomeloansList=()=> {
   }
 
   const handleDelete=async(id)=>{
-        const response= await fetch(`/homeloans/${id}/`,{
+        const response= await fetch(`https://ur-loans.vercel.app/api/homeloans/${id}/`,{
           method:"DELETE",
           headers:{"Content-Type":"application/json"},
           credentials: "include",

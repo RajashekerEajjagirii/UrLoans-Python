@@ -32,14 +32,14 @@ const AdminHome = (props) => {
                     const data= await response.json();
                     setName(data.first_name);
                     if(response.status===200){
-                    sessionStorage.setItem('access',data.first_name);                   
+                        localStorage.setItem('access',data.first_name);                   
                     }else if(response.status===401){
                         alert('Cookie is Expired,Please re-Login...');
-                        sessionStorage.removeItem("access");                        
+                        localStorage.removeItem("access");                        
                         window.location.href="/";
                     }    
                 }catch(error){
-                    toast('token expired');
+                    toast('Your Cookie was expired');
                 }
             }    
 
@@ -62,8 +62,8 @@ const AdminHome = (props) => {
     const checkForInactive=()=>{
         const expireTime=localStorage.getItem("expireTime");
         if(expireTime< Date.now()){
-            alert('Session Expired');
-            sessionStorage.removeItem("access");
+            alert('Your Session was Expired');
+            localStorage.removeItem("access");
             window.location.href="/";
         }
     }

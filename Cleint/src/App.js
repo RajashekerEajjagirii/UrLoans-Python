@@ -42,7 +42,7 @@ const App=()=> {
     
  
   useEffect(()=>{
-    let access=sessionStorage.getItem("access");
+    let access=localStorage.getItem("access");
    
     {access?navigate('/adminhome'):navigate('/')}
     
