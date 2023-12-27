@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/static/css/main.b01c11db.css",
-    "main.js": "/static/js/main.11cccfd5.js",
+    "main.js": "/static/js/main.42267dfc.js",
     "static/media/home-loans.jpg": "/static/media/home-loans.c21de92e06e28d3fb804.jpg",
     "static/media/property1.jpg": "/static/media/property1.0d07c40338f2600a8906.jpg",
     "static/media/UrLoansLogo.png": "/static/media/UrLoansLogo.a856c2aa805d42173407.png",
     "static/media/telangana.png": "/static/media/telangana.82ada6acbb694747db83.png",
     "index.html": "/index.html",
     "main.b01c11db.css.map": "/static/css/main.b01c11db.css.map",
-    "main.11cccfd5.js.map": "/static/js/main.11cccfd5.js.map"
+    "main.42267dfc.js.map": "/static/js/main.42267dfc.js.map"
   },
   "entrypoints": [
     "static/css/main.b01c11db.css",
-    "static/js/main.11cccfd5.js"
+    "static/js/main.42267dfc.js"
   ]
 }
