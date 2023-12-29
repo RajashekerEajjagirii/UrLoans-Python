@@ -23,7 +23,7 @@ const PropertyLoans = () => {
         console.log(data);
 
         try{
-            const response= await fetch("https://ur-loans.vercel.app/api/propertyloans/",{
+            const response= await fetch("/propertyloans/",{
                     method:"POST",
                     headers:{"Content-Type":"Application/json"},
                     credentials:'include',
