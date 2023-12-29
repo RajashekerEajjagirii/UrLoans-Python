@@ -28,7 +28,7 @@ const EditLAPLoans = () => {
     
      const {register, handleSubmit, formState:{errors},reset}=useForm({
       defaultValues:async ()=>{
-        const response=await fetch(`/propertyloans/${id}/`,{
+        const response=await fetch(`https://ur-loans.vercel.app/api/propertyloans/${id}/`,{
           method:"GET",
           headers:{"Content-Type":"application/json"},
           credentials: 'include',

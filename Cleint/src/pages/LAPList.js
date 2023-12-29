@@ -48,7 +48,7 @@ const LAPList=()=> {
     const componentPDF=useRef();
     const[currentPage,setCurrentPage]=useState(1);
     const recordsPerPage=5;
-    const[userData,isLoading,isError]=useFetch("/propertyloans/");
+    const[userData,isLoading,isError]=useFetch("https://ur-loans.vercel.app/api/propertyloans/");
 
     //Print PDF
     const generatePDF=useReactToPrint({
@@ -95,7 +95,7 @@ const closeModal=()=>{
 }
 
 const handleDelete=async(id)=>{
-  const response= await fetch(`/propertyloans/${id}/`,{
+  const response= await fetch(`https://ur-loans.vercel.app/api/propertyloans/${id}/`,{
     method:"DELETE",
     headers:{"Content-Type":"application/json"},
     credentials: "include",

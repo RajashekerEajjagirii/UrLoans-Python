@@ -15,7 +15,7 @@ const LapUserView = () => {
        
         async function getUser(){
             console.log(id);
-            const response=await fetch(`/propertyloans/${id}/`,{
+            const response=await fetch(`https://ur-loans.vercel.app/api/propertyloans/${id}/`,{
                 method:"GET",
                 headers:{"Content-Type":"application/json"},
                 credentials: 'include',
