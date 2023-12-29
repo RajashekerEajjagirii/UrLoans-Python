@@ -93,7 +93,7 @@ class Propertyloan(models.Model):
 
     fullName=models.CharField(max_length=200,null=True)
     email=models.EmailField(max_length=200,null=True)
-    mobileNum=models.IntegerField(max_length=200,null=True)
+    mobileNum=models.CharField(max_length=20,null=True)
     city=models.CharField(max_length=200, null=True)
     loanAmount=models.IntegerField(null=True)
     createdAt=models.DateTimeField(auto_now_add=True,null=True)
