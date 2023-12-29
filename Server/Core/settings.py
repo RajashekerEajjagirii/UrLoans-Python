@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-3i_g)z@49%fi2@u8r8eiy6(4hu5#pnu$5dp&e2uf9_h(00_txv
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app','.now.sh','127.0.0.1','localhost']
+ALLOWED_HOSTS = ['ur-loans.vercel.app','.now.sh','127.0.0.1','localhost']
 AUTH_USER_MODEL  = 'Home.User'
 # AUTHENTICATION_BACKENDS = ['Home.backends.EmailBackend']
 
@@ -168,3 +168,8 @@ EMAIL_HOST_PASSWORD =config("EMAIL_HOST_PASSWORD")
 # CORS (cores dependies add in Installed Apps & Middleware )
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOWED_ORIGINS = [
+    'https://ur-loansapp.vercel.app',
+    'http://ur-loansapp.vercel.app',
+]
