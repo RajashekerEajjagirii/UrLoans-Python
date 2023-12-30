@@ -169,8 +169,27 @@ EMAIL_HOST_PASSWORD =config("EMAIL_HOST_PASSWORD")
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
 
+# allowed CORS for diff domains in prod
 CORS_ALLOWED_ORIGINS = [
     'https://ur-loansapp.vercel.app',
     'http://ur-loansapp.vercel.app',
     'http://localhost:3000'
 ]
+
+CORS_ALLOW_METHODS = (
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
+)
+
+CORS_ALLOW_HEADERS = (
+    "accept",
+    "authorization",
+    "content-type",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
+)
