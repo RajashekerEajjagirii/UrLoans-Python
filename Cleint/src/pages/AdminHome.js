@@ -33,11 +33,12 @@ const AdminHome = (props) => {
                     setName(data.first_name);
                     if(response.status===200){
                     sessionStorage.setItem('access',data.first_name);                   
-                    }else if(response.status===401){
-                        alert('Cookie is Expired,Please re-Login...');
-                        sessionStorage.removeItem("access");                        
-                        window.location.href="/";
-                    }    
+                    }
+                    // else if(response.status===401){
+                    //     alert('Cookie is Expired,Please re-Login...');
+                    //     sessionStorage.removeItem("access");                        
+                    //     window.location.href="/";
+                    // }    
                 }catch(error){
                     toast('token expired');
                 }
