@@ -172,4 +172,5 @@ CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [
     'https://ur-loansapp.vercel.app',
     'http://ur-loansapp.vercel.app',
+    'http://localhost:3000'
 ]
