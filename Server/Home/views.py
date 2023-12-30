@@ -174,7 +174,9 @@ class UserAPI(APIView):
     def get(self,request):
         
         try:
+            print(request)
             token=request.COOKIES.get('UrLoans')
+            token=request.cookies.get('UrLoans')
             payload=jwt.decode(token,'secret',algorithms=['HS256'])
 
             if not token:
