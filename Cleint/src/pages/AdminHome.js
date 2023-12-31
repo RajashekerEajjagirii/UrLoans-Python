@@ -23,7 +23,7 @@ const AdminHome = (props) => {
        ( 
             async()=>{
                 try{
-                    const response=await fetch("https://ur-loans.vercel.app/api/user/",{
+                    const response=await fetch("/user/",{
                         method:"GET",
                         headers:{"Content-Type":"application/json"},
                         credentials: 'include',

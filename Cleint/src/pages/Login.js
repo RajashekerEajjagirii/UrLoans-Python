@@ -27,7 +27,7 @@ const Login = () => {
         console.log(data);
              var statusCode;
             try{
-                const response=await fetch("https://ur-loans.vercel.app/api/login/",{
+                const response=await fetch("/login/",{
                 method:"POST",
                 headers:{"Content-Type":"application/json"},
                 credentials: 'include',
